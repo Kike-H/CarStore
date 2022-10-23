@@ -23,7 +23,7 @@ fun AppNavigation(mCarViewModel: CarViewModel) {
     val navController = rememberAnimatedNavController()
     AnimatedNavHost(navController = navController, startDestination = AppScreens.MainScreen.route) {
         composable(route = AppScreens.MainScreen.route) {
-            MainScreen(navController)
+            MainScreen(navController, mCarViewModel)
         }
         composable(
             route = AppScreens.FormScreen.route,
