@@ -12,12 +12,13 @@ import androidx.compose.ui.unit.IntOffset
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.mehdev.carstore.domain.car.CarViewModel
 import com.mehdev.carstore.screens.FormScreen
 import com.mehdev.carstore.screens.MainScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun AppNavigation() {
+fun AppNavigation(mCarViewModel: CarViewModel) {
     val tweenSpec = tween<IntOffset>(durationMillis = 200, easing = CubicBezierEasing(0.21f,0.28f,0.71f,0.79f))
     val navController = rememberAnimatedNavController()
     AnimatedNavHost(navController = navController, startDestination = AppScreens.MainScreen.route) {
@@ -33,7 +34,7 @@ fun AppNavigation() {
                 slideOutVertically(targetOffsetY = { 600 }, animationSpec = tweenSpec)
             }
         ) {
-            FormScreen(navController)
+            FormScreen(navController, mCarViewModel)
         }
     }
 }
