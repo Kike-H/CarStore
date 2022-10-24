@@ -12,9 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.mehdev.carstore.components.CellCar
 import com.mehdev.carstore.domain.car.CarViewModel
 import com.mehdev.carstore.navigation.AppScreens
@@ -38,7 +36,7 @@ fun MainScreen (navController: NavController, mCarViewModel: CarViewModel) {
 fun MainBody(mCarViewModel: CarViewModel) {
     LazyColumn {
         items(mCarViewModel.state.cars) { car ->
-            CellCar(car = car)
+            CellCar(car = car, mCarViewModel::removeCar)
         }
     }
 }

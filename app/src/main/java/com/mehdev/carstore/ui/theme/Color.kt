@@ -7,6 +7,7 @@ val BlueDarkness = Color(0xFF0C1E41)
 val Dark = Color(0xFF111111)
 val BlueLight = Color(0xFFE1F2FF)
 val WhiteSmoke = Color(0xFFEEEEEE)
+val DangerRed = Color(0xFFB82217)
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)

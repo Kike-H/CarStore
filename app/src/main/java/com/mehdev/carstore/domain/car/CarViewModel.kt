@@ -38,6 +38,15 @@ class CarViewModel(private val carRepository: CarRepository) : ViewModel() {
         )
     }
 
+    fun removeCar(car: Car) {
+        viewModelScope.launch {
+            carRepository.deleteCar(car)
+            state = state.copy(
+                cars = carRepository.getCars()
+            )
+        }
+    }
+
     fun saveCar() {
         viewModelScope.launch {
             carRepository.insertCar(Car(

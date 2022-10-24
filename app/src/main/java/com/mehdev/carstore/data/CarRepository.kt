@@ -11,4 +11,8 @@ class CarRepository(private val carDao: CarDao) {
     suspend fun insertCar(car: Car) {
         carDao.insertCar(car.toEntity())
     }
+
+    suspend fun deleteCar(car: Car){
+        carDao.deleteCar(car.toEntity())
+    }
 }
