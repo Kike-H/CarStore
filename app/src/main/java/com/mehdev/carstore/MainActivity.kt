@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.room.Room
 import com.mehdev.carstore.data.CarDataBase
@@ -38,10 +39,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    CarStoreTheme {
-//        AppNavigation()
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    val db = Room.databaseBuilder(LocalContext.current, CarDataBase::class.java, "car_store").build()
+    val dao = db.dao
+    val repository = CarRepository(dao)
+    val mCarViewModel = CarViewModel(repository)
+    CarStoreTheme {
+        AppNavigation(mCarViewModel)
+    }
+}

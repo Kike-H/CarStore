@@ -74,7 +74,7 @@ fun FormBody(mCarViewModel: CarViewModel) {
             colors = ButtonDefaults.buttonColors(containerColor = BlueDarkness)
         ) {
             Text(
-                text = "ADD CAR",
+                text = "SAVE CAR",
                 fontSize = 22.sp,
                 color = WhiteSmoke
             )

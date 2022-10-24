@@ -13,15 +13,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.mehdev.carstore.domain.car.Car
+import com.mehdev.carstore.navigation.AppScreens
 import com.mehdev.carstore.ui.theme.DangerRed
 import com.mehdev.carstore.ui.theme.WhiteSmoke
 
 @Composable
-fun CellCar(car: Car, callback: (car: Car) -> Unit ) {
+fun CellCar(car: Car, navController: NavController ,callback: (car: Car) -> Unit, calllbackTwo:(car: Car) -> Unit) {
     Column {
         Row(modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
             Box(
@@ -42,7 +43,7 @@ fun CellCar(car: Car, callback: (car: Car) -> Unit ) {
                 )
             }
             Spacer(modifier = Modifier.width(30.dp))
-            Texts(car = car)
+            Texts(car = car, navController, calllbackTwo)
 
         }
         Divider()
@@ -50,8 +51,14 @@ fun CellCar(car: Car, callback: (car: Car) -> Unit ) {
 }
 
 @Composable
-fun Texts(car: Car) {
-    Row(modifier = Modifier.absolutePadding(right = 30.dp).clickable {  }, ) {
+fun Texts(car: Car, navController: NavController, callback: (car: Car) -> Unit) {
+    Row(modifier = Modifier
+        .absolutePadding(right = 30.dp)
+        .clickable {
+            navController.navigate(AppScreens.FormScreen.route)
+            callback(car)
+        }
+    ) {
         Spacer(modifier = Modifier.width(10.dp))
         Column() {
             Text(
@@ -74,9 +81,9 @@ fun Texts(car: Car) {
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun DefaultCellCarPreview() {
-    fun callback (car: Car) {}
-    CellCar(Car(id = null, licensePlate = "XPPA24", model = "Honda", color = "Red"), ::callback)
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//fun DefaultCellCarPreview() {
+//    fun callback (car: Car) {}
+//    CellCar(Car(id = null, licensePlate = "XPPA24", model = "Honda", color = "Red"), ::callback)
+//}

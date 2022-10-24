@@ -47,10 +47,19 @@ class CarViewModel(private val carRepository: CarRepository) : ViewModel() {
         }
     }
 
+    fun onUpdate(car: Car) {
+        state = state.copy(
+            id = car.id,
+            licensePlate = car.licensePlate,
+            model = car.model,
+            color = car.color
+        )
+    }
+
     fun saveCar() {
         viewModelScope.launch {
             carRepository.insertCar(Car(
-                id = null,
+                id = state.id,
                 licensePlate = state.licensePlate.uppercase(),
                 model = state.model,
                 color = state.color
@@ -58,6 +67,7 @@ class CarViewModel(private val carRepository: CarRepository) : ViewModel() {
 
             state = state.copy(
                 cars = carRepository.getCars(),
+                id = null,
                 licensePlate = "",
                 model = "",
                 color = ""

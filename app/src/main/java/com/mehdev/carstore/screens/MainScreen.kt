@@ -28,15 +28,15 @@ fun MainScreen (navController: NavController, mCarViewModel: CarViewModel) {
             FABAddCar(navController)
         }
     ) {
-        MainBody(mCarViewModel)
+        MainBody(mCarViewModel, navController)
     }
 }
 
 @Composable
-fun MainBody(mCarViewModel: CarViewModel) {
+fun MainBody(mCarViewModel: CarViewModel, navController: NavController) {
     LazyColumn {
         items(mCarViewModel.state.cars) { car ->
-            CellCar(car = car, mCarViewModel::removeCar)
+            CellCar(car = car, navController ,mCarViewModel::removeCar, mCarViewModel::onUpdate)
         }
     }
 }

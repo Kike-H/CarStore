@@ -9,9 +9,13 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.IntOffset
+import androidx.navigation.NavArgument
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.mehdev.carstore.domain.car.Car
 import com.mehdev.carstore.domain.car.CarViewModel
 import com.mehdev.carstore.screens.FormScreen
 import com.mehdev.carstore.screens.MainScreen
